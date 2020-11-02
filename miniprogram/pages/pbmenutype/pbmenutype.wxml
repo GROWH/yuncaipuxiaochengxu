@@ -1,0 +1,35 @@
+<view class='adminPerson'>
+	<!-- 菜谱分类列表 (菜谱分类列表) -->
+	<view class='cpfllb' >
+		<view wx:for="{{cates}}" wx:key="_id">
+			<text class="txt">{{item.cateName}}</text>
+			<text class="btn" data-index="{{index}}" bindtap="_deleteCate" style="background:#f1613c">删除</text>
+			<text class="btn" data-index="{{index}}" bindtap="_showUpdateBtn" style="background:#4578ff">修改</text>
+		</view>
+		<!-- 添加按钮 -->
+		<view class="fladd" bindtap="_showAddBtn">
+			<image src="/static/personal/add.png"></image>
+		</view>
+
+	</view>
+	<!--    页面 （菜谱添加分类） -->
+	<view class='cptjfl' wx:if="{{showAddInput}}">
+
+		<mp-cell prop="mobile" ext-class=" weui-cell_vcode">
+			<!-- 输入菜谱分类 -->
+			<input class="weui-input" placeholder="输入菜谱分类" bindinput="_getCateName" />
+			<view slot="footer" class="weui-vcode-btn" bindtap="_addCate" >添加</view>
+		</mp-cell>
+	</view>
+	<!-- 修改页面  （菜谱修改分类）-->
+	<view class='cpxgfl'  wx:if="{{showUpdataInput}}">
+
+		<mp-cell prop="mobile" ext-class=" weui-cell_vcode">
+			<!-- 输入菜谱分类 -->
+			<input value="{{cate.cateName}}" class="weui-input" placeholder="输入菜谱分类"  bindinput="_getCateName" />
+			<view slot="footer" class="weui-vcode-btn" bindtap="_updataCates">修改</view>
+		</mp-cell>
+
+	</view>
+
+</view>

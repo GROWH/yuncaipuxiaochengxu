@@ -1,0 +1,51 @@
+<!-- 最外层的盒子 -->
+<view class="container">
+  <!-- 菜谱图片 -->
+  <swiper class="container_recipeimage" 
+    indicator-dots="{{ true }}" 
+    indicator-active-color="#f00"
+    indicator-color="gray"
+  >
+    <swiper-item wx:for="{{menu.img}}" wx:key="*this">
+        <image src="{{item}}"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 菜谱名称  作者  热门(浏览)  推荐度（也就是关注-和-收藏） -->
+  <view class="container_info">
+    <view class="container_info_recipename">
+      <text>{{menu.menu_name}}</text>
+    </view>
+    <view class="container_info_recipedetail">
+      <text>by {{userInfo.nickName}}</text>
+      <text>{{menu.collect_num}}人收藏</text>
+      <text>{{menu.view_num+1}}次浏览</text>
+    </view>
+  </view>
+  <!-- 中间一条横线 -->
+  <view class="fgx"></view>
+  <!-- 做法 -->
+  <view class="recipedetail">
+    <text>{{menu.menu_info}}</text>
+  </view>
+  <!-- 关注按钮    分享朋友 -->
+  <view class="container_bottom">
+    <!-- 关注 -->
+    <view class="guanzhu" bindtap="_setFollow">
+      <!-- 未关注 -->
+      <block wx:if="{{!isFollow}}" >
+        <image src="/static/index/tj.png"></image>
+        <text>收藏</text>
+      </block>
+      <!-- 已经关注 -->
+      <block wx:else>
+        <image src="/static/index/tj1.png"></image>
+        <text>已收藏</text>
+      </block>
+    </view>
+    <!-- 分享给朋友 -->
+    <view class="share">
+      <image src="/static/index/share.png"></image>
+      <button open-type="share" class="btn">分享给朋友</button>    
+    </view>
+  </view>
+</view>
